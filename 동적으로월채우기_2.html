@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이중포문기초</title>
+    <script>
+        function selectMonth(){
+            let sel = document.getElementById("sel");
+            for(let i=1; i<=12; i++){
+                let op = document.createElement("option");
+                op.text = i + "월";
+                sel.add(op);
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <button onClick="selectMonth()">누르기</button>
+    <select id="sel">
+        <option>월선택</option>
+    </select>
+</body>
+
+</html>

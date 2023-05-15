@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>들었다놨다</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        #wrapper{
+            width: 100%;
+            height: 700px;
+            background: papayawhip ;
+            position: relative;
+            /*자식요소에 position이 선언되면, 반드시 부모 요소에도 포지션을 명시해야 한다.*/
+        }
+
+        #cookie{
+            position:absolute; /*부모를 기준으로 한 절대 위치 left, top*/
+            left: 150px;
+            top: 100px;
+            float: ;
+        }
+
+        #bowl{
+            position: absolute;
+            left: 300px;
+            top: 300px;
+        }
+    </style>
+    <script>
+        let flag=true;
+        let cookie; //다른 함수에서도 이 변수를 이용할 수 있도록
+        //이 변수를 전역변수로 선언해 활용력 올리기.
+
+        //마우스를 div 위에서 움직이는 동안~ 마우스의 x, y좌표 얻어내기
+        function getPos(){
+            if(flag){
+                //console.log("마우스 움직이는 중");
+                //js에서는 모든 이벤트에 대한 정보를 담고 있는 객체인 event 객체를 지원해준다.
+                //객체는 추후에 배울 예정
+                //console.log("x좌표:", event.clientX, "y좌표:", event.clientY);
+                
+                //마우스의 좌표와 음식 이미지의 좌표를 일치시킬경우, 음식이 마우스를 따라다니는 효과가 날 수 있다.
+                //문서 내의 cookie라는 요소의 스타일 중 left, top을 제어할 예정
+                cookie=document.getElementById("cookie");
+                cookie.style.left=event.clientX-150+"px";
+                cookie.style.top=event.clientY-150+"px";
+            }
+        }
+
+        //음식을 한 번 클릭하면 내려놓고, 다시 클릭하면 다시 집기.
+        function take(){
+            //alert("나 눌렀어?");
+            flag=!flag;
+
+            //음식이 움직일 수 있을 때는 즉 드래그 가능할 때는 유저들에게 시각 정보를 보여주면
+            //이용에 도움이 될 것.
+            if(flag==true){
+                cookie.style.border="5px solid #ff9933";
+            }else{
+                cookie.style.border="0px";
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <div id="wrapper" onMouseMove="getPos()">
+        <img src="../images/bowl2.png" width="500px" id="bowl">
+
+        <img src="../images/cookie.png" onClick="take()" width="300px" height="300px" id="cookie">
+    </div>
+</body>
+</html>

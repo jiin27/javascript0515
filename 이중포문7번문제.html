@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이중포문7번문제</title>
+    <script>
+        //html문서가 모두 로드가 되면, 아래의 함수가 동작함.
+        function createTable() {
+            document.write("<table border=\"1px\" width=\"300px\" height=\"250px\">");
+            for (let i = 1; i <= 3; i++) { //층수
+                document.write("<tr>");
+                for (let d = 1; d <= 5; d++) { //호수
+                    document.write("<td></td>");
+                }
+                document.write("</tr>");
+            }
+            document.write("</table>");
+        }
+    </script>
+</head>
+
+<body onLoad="createTable()">
+
+</body>
+
+</html>
